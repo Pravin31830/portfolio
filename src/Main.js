@@ -1,9 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Typed from 'typed.js';
+import { ProgressBar } from 'react-bootstrap';
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div>
+export default function Home() {
+ 
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Designer,', 'Application Developer'],
+      typeSpeed: 50,
+    });
+
+    
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+  
+
+  return (
+    <div>
   <i className="bi bi-list mobile-nav-toggle d-xl-none"></i>
 <header id="header">
   <div className="d-flex flex-column">
@@ -11,7 +30,7 @@ export default class Home extends Component {
     <div className="profile">
       <img src="assets/img/profile-img.jpg" alt="" className="img-fluid rounded-circle"/>
       <h1 className="text-light"><a href="index.html">Pravin</a></h1>
-      <div class="social-links mt-3 text-center">
+      <div className="social-links mt-3 text-center">
         <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
         <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
         <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
@@ -37,7 +56,8 @@ export default class Home extends Component {
   <div className="hero-container" data-aos="fade-in">
   <h1>Hello There</h1>
     <h1>I'm Pravin</h1>
-    <p>I'm <span className="typed" data-typed-items="Designer,Application Developer"></span></p>
+    <p>I'm <span className="typed" ref={el}  data-typed-items=""></span></p>
+   
   </div>
 </section>
 
@@ -107,7 +127,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Canva<i className="val">80%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={80} />
             </div>
           </div>
           
@@ -115,7 +135,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Figma<i className="val">80%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={80} />
             </div>
           </div>
 
@@ -125,7 +145,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Photoshop<i className="val">90%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={90} />
             </div>
           </div>
 
@@ -146,14 +166,14 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">HTML <i className="val">100%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={100} />
             </div>
           </div>
 
           <div className="progress">
             <span className="skill">CSS <i className="val">90%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={90} />
             </div>
           </div>
           
@@ -161,7 +181,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Bootstrap<i className="val">80%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={80} />
             </div>
           </div>
           
@@ -169,7 +189,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">JavaScript <i className="val">75%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={75} />
             </div>
           </div>
 
@@ -181,7 +201,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">React.js<i className="val">90%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={90} />
             </div>
           </div>
           
@@ -189,7 +209,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Node.js<i className="val">90%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={90} />
             </div>
           </div>
           
@@ -197,7 +217,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Real-time Database<i className="val">55%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={55} />
             </div>
           </div>
 
@@ -215,7 +235,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <div className="progress">
             <span className="skill">Java<i className="val">70%</i></span>
             <div className="progress-bar-wrap">
-              <div className="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+            <ProgressBar variant="primary" now={70} />
             </div>
           </div>
       
@@ -225,7 +245,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
   </section>
 
 
-  <section id="resume" class="resume">
+  <section id="resume" className="resume">
     <div className="container">
 
       <div className="section-title">
@@ -292,7 +312,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
   </section>
 
   
-  <section id="portfolio" class="portfolio section-bg">
+  <section id="portfolio" className="portfolio section-bg">
     <div className="container">
 
       <div className="section-title">
@@ -313,10 +333,10 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
 
         <div className="col-lg-4 col-md-6 portfolio-item filter-web">
           <div className="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""/>
+            <img src="assets/img/portfolio/portfolio-2.jpg" className="img-fluid" alt=""/>
             <div className="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -325,10 +345,10 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
 
         <div className="col-lg-4 col-md-6 portfolio-item filter-web">
           <div className="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt=""/>
+            <img src="assets/img/portfolio/portfolio-5.jpg" className="img-fluid" alt=""/>
             <div className="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 2"><i className="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -338,10 +358,10 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
 
         <div className="col-lg-4 col-md-6 portfolio-item filter-web">
           <div className="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt=""/>
+            <img src="assets/img/portfolio/portfolio-9.jpg" className="img-fluid" alt=""/>
             <div className="portfolio-links">
-              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" title="More Details"><i className="bx bx-link"></i></a>
             </div>
           </div>
         </div>
@@ -354,7 +374,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
   
 
   
-  <section id="contact" class="contact">
+  <section id="contact" className="contact">
     <div className="container">
 
       <div className="section-title">
@@ -374,7 +394,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
             <div className="email">
               <i className="bi bi-envelope"></i>
               <h4>Email:</h4>
-              <p>pravin20201047@gmail</p>
+              <p>pravin20201047@gmail.com</p>
             </div>
 
             <div className="phone">
@@ -383,7 +403,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
               <p>+91 8778682768</p>
             </div>
 
-          {/* \  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31351.63571829359!2d78.67980784816699!3d10.814796721410776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf5070425d60b%3A0x29949d8da9b4efb2!2sTiruchirappalli%2C%20Tamil%20Nadu%20620008!5e0!3m2!1sen!2sin!4v1702012938721!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> */}
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31351.63571829359!2d78.67980784816699!3d10.814796721410776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf5070425d60b%3A0x29949d8da9b4efb2!2sTiruchirappalli%2C%20Tamil%20Nadu%20620008!5e0!3m2!1sen!2sin!4v1702012938721!5m2!1sen!2sin" frameborder="0" style={{border:"0",width:"100%",height:"290px"}} allowfullscreen></iframe>
           </div>
 
         </div>
@@ -392,21 +412,21 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
           <form   role="form" className="php-email-form">
             <div className="row">
               <div className="form-group col-md-6">
-                <label for="name">Your Name</label>
+                <label htmlFor="name">Your Name</label>
                 <input type="text" name="name" className="form-control" id="name" required/>
               </div>
               <div className="form-group col-md-6">
-                <label for="name">Your Email</label>
+                <label htmlFor="name">Your Email</label>
                 <input type="email" className="form-control" name="email" id="email" required/>
               </div>
             </div>
             <div className="form-group">
-              <label for="name">Subject</label>
+              <label htmlFor="name">Subject</label>
               <input type="text" className="form-control" name="subject" id="subject" required/>
             </div>
             <div className="form-group">
-              <label for="name">Message</label>
-              <textarea class="form-control" name="message" rows="10" required></textarea>
+              <label htmlFor="name">Message</label>
+              <textarea className="form-control" name="message" rows="10" required></textarea>
             </div>
             <div className="my-3">
               <div className="loading">Loading</div>
@@ -425,9 +445,9 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
 </div>
 
 
-<a href="#" className="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" className="back-to-top d-flex align-items-center justify-content-center"><i className="bi bi-arrow-up-short"></i></a>
       </div>
       
-    )
-  }
+
+  )
 }
