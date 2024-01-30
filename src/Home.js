@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typed from 'typed.js';
 import { ProgressBar } from 'react-bootstrap';
+import { database } from './Firebase/Config';
+import { collection,addDoc,getDocs } from 'firebase/firestore';
 
 export default function Home() {
  
+const [name ,setName] =useState("");
+const [email , SetEmail] =useState("");
+const [subject , setSubject] =useState("");
+const [message , setMessage] =useState("");
+const [val,setVal] =useState([])
+
+const value = collection(database,"details");
+
+
+const handleCreate =async()=>{
+  await addDoc(value,{name1:name,emailid:email,sub:subject,mes:message})
+  
+}
+
+
+ useEffect(()=>{
+   const getData= async()=>{
+     const dbVal = await getDocs(value)
+     setVal(dbVal.docs.map(doc=>({...doc.data(),id:doc.id})))
+   }
+   getData()
+})
+
+  const [showMenu, setMenu] = useState();
+
   const el = React.useRef(null);
 
   React.useEffect(() => {
@@ -12,8 +39,6 @@ export default function Home() {
       typeSpeed: 50,
     });
 
-    
-
     return () => {
       // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
@@ -21,9 +46,13 @@ export default function Home() {
   }, []);
   
 
+  function display() {
+    setMenu(value=>!value)
+  }
+
   return (
     <div>
-  <i className="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <i className="bi bi-list mobile-nav-toggle d-xl-none" onClick={display}></i>
 <header id="header">
   <div className="d-flex flex-column">
 
@@ -394,7 +423,7 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
             <div className="email">
               <i className="bi bi-envelope"></i>
               <h4>Email:</h4>
-              <p>pravin20201047@gmail.com</p>
+              <p>pravin20201047@gmail</p>
             </div>
 
             <div className="phone">
@@ -403,37 +432,37 @@ MERN Stack developer with proven ability to design and develop JavaScript-based 
               <p>+91 8778682768</p>
             </div>
 
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31351.63571829359!2d78.67980784816699!3d10.814796721410776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf5070425d60b%3A0x29949d8da9b4efb2!2sTiruchirappalli%2C%20Tamil%20Nadu%20620008!5e0!3m2!1sen!2sin!4v1702012938721!5m2!1sen!2sin" frameborder="0" style={{border:"0",width:"100%",height:"290px"}} allowfullscreen></iframe>
+          { <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31351.63571829359!2d78.67980784816699!3d10.814796721410776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf5070425d60b%3A0x29949d8da9b4efb2!2sTiruchirappalli%2C%20Tamil%20Nadu%20620008!5e0!3m2!1sen!2sin!4v1702012938721!5m2!1sen!2sin" frameborder="0" style={{border:"0", width: "100%", height:"290px"}} allowfullscreen></iframe> }
           </div>
 
         </div>
 
         <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          <form   role="form" className="php-email-form">
+          <form  className="php-email-form">
             <div className="row">
               <div className="form-group col-md-6">
                 <label htmlFor="name">Your Name</label>
-                <input type="text" name="name" className="form-control" id="name" required/>
+                <input type="text"  className="form-control"   value={name} onChange={(e)=>setName(e.target.value)}  required/>
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="name">Your Email</label>
-                <input type="email" className="form-control" name="email" id="email" required/>
+                <input type="email" className="form-control"  value={email} onChange={(e)=>SetEmail(e.target.value)} required/>
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="name">Subject</label>
-              <input type="text" className="form-control" name="subject" id="subject" required/>
+              <input type="text" className="form-control"  value={subject} onChange={(e)=>setSubject(e.target.value)} required/>
             </div>
             <div className="form-group">
               <label htmlFor="name">Message</label>
-              <textarea className="form-control" name="message" rows="10" required></textarea>
+              <textarea className="form-control" rows="10" value={message} onChange={(e)=>setMessage(e.target.value)} required></textarea>
             </div>
             <div className="my-3">
               <div className="loading">Loading</div>
               <div className="error-message"></div>
               <div className="sent-message">Your message has been sent. Thank you!</div>
             </div>
-            <div className="text-center"><button type="submit">Send Message</button></div>
+            <div className="text-center"><button type="submit" onClick={handleCreate}>Send Message</button></div>
           </form>
         </div>
 
